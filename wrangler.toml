@@ -4,4 +4,4 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "undangan-aieca-rsvp"
-database_id = "GANTI_DENGAN_DATABASE_ID_DARI_CLOUDFLARE"
+database_id = "fbd947f2-8a8d-4d10-a997-d3cd901b4ed7"
