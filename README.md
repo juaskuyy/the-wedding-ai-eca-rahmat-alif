@@ -36,3 +36,7 @@ Website statis responsif untuk GitHub Pages atau Cloudflare Pages. Tidak memerlu
 - Form RSVP saat ini membuka WhatsApp dengan teks yang telah disiapkan; data belum disimpan ke database.
 - Musik tidak disertakan karena lagu belum dipilih.
 - Data pada `config.js` masih placeholder dan harus diperbarui sebelum digunakan sebagai undangan sungguhan.
+
+
+## Aset visual lokal
+Folder `assets/` kini berisi ilustrasi SVG buatan khusus untuk tema garden wedding: `garden-cover.svg`, `floral-corner.svg`, `couple-illustration.svg`, dan tiga ilustrasi galeri. Semua aset visual ini disimpan lokal sehingga ikut ter-deploy di GitHub/Cloudflare Pages tanpa perlu hosting gambar eksternal. Folder `assets/music/` disediakan untuk lagu yang dipilih nanti; belum ada audio karena musik belum ditentukan.
