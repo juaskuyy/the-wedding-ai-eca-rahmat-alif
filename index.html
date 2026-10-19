@@ -1,65 +1,9 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#183c31">
-  <meta name="description" content="Undangan pernikahan digital">
-  <title>Undangan Pernikahan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="music-pill" id="musicPill" hidden><button id="musicToggle" aria-label="Putar atau jeda musik">♫ <span id="musicLabel">Musik</span></button></div>
-  <main>
-    <section class="cover" id="cover" aria-label="Sampul undangan">
-      <div class="cover-grain"></div><div class="leaf leaf-a">❧</div><div class="leaf leaf-b">❧</div>
-      <div class="cover-frame">
-        <p class="eyebrow" data-text="coverEyebrow">THE WEDDING OF</p>
-        <div class="floral-mark" aria-hidden="true"><span>✿</span><i></i><span>❀</span></div>
-        <h1 class="cover-names"><span data-text="brideShort">Nama Wanita</span><em>&amp;</em><span data-text="groomShort">Nama Pria</span></h1>
-        <p class="cover-date" data-text="dateShort">Tanggal Pernikahan</p>
-        <div class="cover-rule"><span>✧</span></div>
-        <p class="cover-note">Kepada Yth.</p><p class="guest" id="guestName">Bapak/Ibu/Saudara/i</p>
-        <button class="open-button" id="openInvitation"><span>✧</span> BUKA UNDANGAN <span>✧</span></button>
-        <p class="small-note">Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
-      </div>
-      <p class="scroll-hint">AN INVITATION FROM THE HEART <span>↓</span></p>
-    </section>
-
-    <section class="intro section-pad reveal" id="intro">
-      <div class="section-ornament">❦</div>
-      <p class="eyebrow">BISMILLAHIRRAHMANIRRAHIM</p>
-      <p class="arabic" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
-      <p class="verse">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri...”</p>
-      <p class="verse-source">QS. Ar-Rum: 21</p>
-      <div class="thin-rule"></div>
-      <p class="intro-copy">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-    </section>
-
-    <section class="couple section-pad reveal" id="couple">
-      <p class="eyebrow">TWO HEARTS, ONE JOURNEY</p><h2>Memperkenalkan<br><i>Kedua Mempelai</i></h2>
-      <div class="couple-grid">
-        <article class="person-card"><div class="portrait portrait-bride"><span class="portrait-flower">✿</span><span class="portrait-initial" data-text="brideInitial">W</span></div><h3 data-text="brideName">Nama Lengkap Wanita</h3><p class="child-of">Putri dari</p><p class="parents" data-text="brideParents">Bapak Nama Ayah &amp; Ibu Nama Ibu</p><p class="social" data-text="brideSocial">@instagram</p></article>
-        <div class="ampersand">&amp;</div>
-        <article class="person-card"><div class="portrait portrait-groom"><span class="portrait-flower">❀</span><span class="portrait-initial" data-text="groomInitial">P</span></div><h3 data-text="groomName">Nama Lengkap Pria</h3><p class="child-of">Putra dari</p><p class="parents" data-text="groomParents">Bapak Nama Ayah &amp; Ibu Nama Ibu</p><p class="social" data-text="groomSocial">@instagram</p></article>
-      </div>
-    </section>
-
-    <section class="countdown-section reveal" id="countdownSection"><div class="countdown-overlay"></div><div class="countdown-content"><p class="eyebrow">SAVE THE DATE</p><h2>Menuju Hari Bahagia</h2><p class="date-large" data-text="dateLong">Hari, tanggal pernikahan</p><div class="countdown" id="countdown"><div><strong id="days">00</strong><span>Hari</span></div><i>:</i><div><strong id="hours">00</strong><span>Jam</span></div><i>:</i><div><strong id="minutes">00</strong><span>Menit</span></div><i>:</i><div><strong id="seconds">00</strong><span>Detik</span></div></div><p class="countdown-message" id="countdownMessage"></p></div></section>
-
-    <section class="events section-pad reveal" id="events"><p class="eyebrow">JOIN OUR CELEBRATION</p><h2>Rangkaian <i>Acara</i></h2><div class="event-grid"><article class="event-card"><div class="event-icon">❦</div><p class="event-type">ACARA PERTAMA</p><h3>Akad Nikah</h3><div class="event-line"></div><p data-text="akadDate">Hari, tanggal</p><p data-text="akadTime">Pukul 08.00 WIB – selesai</p><p class="event-location" data-text="venue">Nama tempat / alamat acara</p></article><article class="event-card"><div class="event-icon">❀</div><p class="event-type">ACARA KEDUA</p><h3>Resepsi</h3><div class="event-line"></div><p data-text="receptionDate">Hari, tanggal</p><p data-text="receptionTime">Pukul 11.00 WIB – selesai</p><p class="event-location" data-text="venue2">Nama tempat / alamat acara</p></article></div><a class="outline-button" id="mapsButton" href="https://maps.google.com" target="_blank" rel="noopener">⌖ &nbsp; BUKA LOKASI</a></section>
-
-    <section class="gallery section-pad reveal" id="gallery"><p class="eyebrow">A MOMENT TO REMEMBER</p><h2>Our <i>Gallery</i></h2><p class="gallery-intro">Setiap kisah memiliki keindahannya sendiri. Inilah beberapa potongan cerita kami.</p><div class="gallery-grid"><div class="gallery-tile tile-one"><span>✿</span><small>OUR STORY</small></div><div class="gallery-tile tile-two"><span>❦</span><small>FOREVER</small></div><div class="gallery-tile tile-three"><span>❀</span><small>TOGETHER</small></div></div><p class="gallery-hint">Ilustrasi sementara dapat diganti dengan foto pasangan pilihan Anda di folder <code>assets</code>.</p></section>
-
-    <section class="rsvp section-pad reveal" id="rsvp"><div class="section-ornament">✧</div><p class="eyebrow">KINDLY RESPOND</p><h2>Konfirmasi <i>Kehadiran</i></h2><p>Doa restu dan kehadiran Anda merupakan kebahagiaan bagi kami.</p><form id="rsvpForm"><label for="rsvpName">Nama</label><input id="rsvpName" name="name" placeholder="Masukkan nama" required><label for="attendance">Konfirmasi kehadiran</label><select id="attendance" name="attendance"><option value="Hadir">Insyaallah hadir</option><option value="Tidak dapat hadir">Mohon maaf, belum dapat hadir</option></select><label for="guestCount">Jumlah tamu</label><select id="guestCount" name="count"><option>1 orang</option><option>2 orang</option><option>3 orang</option><option>4 orang</option></select><button class="open-button dark-button" type="submit">KIRIM KONFIRMASI VIA WHATSAPP</button></form><p class="form-note">Tombol ini akan membuka WhatsApp dengan pesan yang sudah disiapkan.</p></section>
-
-    <section class="closing reveal"><div class="closing-ornament">❦</div><p class="eyebrow">WITH LOVE AND GRATITUDE</p><h2>Merupakan suatu kebahagiaan<br>dan kehormatan bagi kami</h2><p>Atas kehadiran serta doa restu Bapak/Ibu/Saudara/i, kami mengucapkan terima kasih.</p><p class="closing-blessing">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p><div class="closing-names"><span data-text="brideShort">Nama Wanita</span><em>&amp;</em><span data-text="groomShort">Nama Pria</span></div><div class="closing-flower">✿ ❧ ❀</div></section>
-  </main>
-  <footer>MADE WITH LOVE <span>✧</span> WEDDING INVITATION</footer>
-  <audio id="bgMusic" loop preload="none"></audio>
-  <script src="config.js"></script><script src="script.js"></script>
-</body>
-</html>
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#68131d"><title>Undangan Pernikahan — آي إيكا & نعمة الألف</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<div class="music-pill"><button id="musicToggle">♫ <span>Musik</span></button></div><audio id="bgMusic" loop preload="none"><source src="assets/music.mp3" type="audio/mpeg"></audio><main>
+<section class="cover page" id="cover"><img class="cover-art" src="assets/cover.jpg" alt="Sampul undangan bunga dan pasangan"><button class="cover-hitbox" id="openInvite" aria-label="Buka undangan">Buka Undangan</button></section>
+<section class="page floral-bg"><div class="paper-card reveal"><p class="arabic bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p><div class="ornament">✧</div><p class="arabic verse" lang="ar" dir="rtl">وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p><p class="translation">“Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</p><p class="verse-ref">(Q.S. Ar-Ruum: 21)</p></div></section>
+<section class="page floral-bg"><div class="maroon-panel reveal"><p class="arabic greeting" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p><p class="blessing">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p><div class="family-card"><p>Putri dari</p><p class="parents">Bpk. Ade Chandra<br>&amp; Ibu Ida Royani</p><h2 lang="ar" dir="rtl">آي إيكا</h2><div class="ampersand">❦</div><p>Putra dari</p><p class="parents">Bpk. Dunan Maesyi (Alm)<br>&amp; Ibu Aam Salamah</p><h2 lang="ar" dir="rtl">نعمة الألف</h2></div></div></section>
+<section class="page floral-bg"><div class="maroon-panel event-panel reveal"><div class="event-block"><span class="line-icon">▦</span><h2>Sabtu, 26 Desember 2026</h2></div><div class="event-block"><span class="line-icon">◷</span><p>Akad: 10.00 – 11.00</p><p>Resepsi: 09.00 – Selesai</p></div><div class="event-block"><span class="line-icon">♧</span><p class="location-title">Kediaman Mempelai Wanita</p><p class="address">Kp. Hegarmanah, RT 01/RW 03,<br>Desa Cigarongggong, Kec. Cibalong,<br>Kab. Garut</p><img class="qr" id="locationQr" alt="QR lokasi Google Maps"><a class="map-link" href="https://maps.app.goo.gl/6uacdMQvnE8VaueG8?g_st=ac" target="_blank" rel="noopener">Buka Lokasi di Google Maps ↗</a></div></div></section>
+<section class="page floral-bg"><div class="gift-card reveal"><h2>Wedding Gift</h2><div class="envelope"><div class="envelope-flap"></div><span>✿</span></div><div class="gift-details"><p class="gift-name">AIECA</p><p>Bank Mandiri</p><p class="account" id="accountNumber">1770026460961</p><button class="outline-btn" id="copyAccount">Salin Nomor Rekening</button><p class="copy-status" id="copyStatus" aria-live="polite"></p></div><div class="couple-silhouette">♥</div></div></section>
+<section class="page floral-bg"><div class="rsvp-card reveal"><p class="eyebrow">KAMI MENANTIKAN KEHADIRAN ANDA</p><h2>Anda diundang!</h2><form id="rsvpForm"><label for="guestName">Nama</label><input id="guestName" name="name" maxlength="100" required placeholder="Masukkan nama Anda"><fieldset><legend>Apa Anda akan hadir di resepsi nikahan kami?</legend><label class="choice"><input type="radio" name="attendance" value="Hadir" required><span>Tentu, dengan senang hati</span><b>♡</b></label><label class="choice"><input type="radio" name="attendance" value="Tidak hadir"><span>Mohon maaf tidak dapat hadir</span><b>☹</b></label></fieldset><fieldset><legend>Pilihan suvenir</legend><label class="choice"><input type="radio" name="souvenir" value="Gelas" required><span>Gelas</span><b>♜</b></label><label class="choice"><input type="radio" name="souvenir" value="Cermin"><span>Cermin</span><b>♧</b></label><label class="choice"><input type="radio" name="souvenir" value="Parfum"><span>Parfum</span><b>♙</b></label></fieldset><button class="primary-btn submit-btn" type="submit">Konfirmasi <span>↗</span></button><p id="rsvpMessage" class="form-message" role="status"></p></form></div></section>
+<section class="page floral-bg"><div class="closing-card reveal"><div class="couple-art"><span>♥</span><div class="bride"></div><div class="groom"></div></div><p class="closing-quote">“Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.”</p><p class="arabic closing-greeting" lang="ar" dir="rtl">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p><p class="end-mark">Dengan penuh cinta</p><h2 lang="ar" dir="rtl">آي إيكا <span>&amp;</span> نعمة الألف</h2></div></section></main><footer lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</footer><script src="script.js"></script></body></html>

@@ -1,0 +1,7 @@
+name = "undangan-aieca"
+compatibility_date = "2026-10-19"
+pages_build_output_dir = "."
+[[d1_databases]]
+binding = "DB"
+database_name = "undangan-aieca-rsvp"
+database_id = "GANTI_DENGAN_DATABASE_ID_DARI_CLOUDFLARE"
