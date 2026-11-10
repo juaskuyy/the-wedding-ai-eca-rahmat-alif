@@ -193,3 +193,17 @@
   font-style: italic;
 }
 .cover-guest-greeting[hidden] { display: none !important; }
+
+/* POSISI FINAL SAPAAN TAMU DI BAWAH PASANGAN */
+#cover .cover-guest-greeting {
+  position: absolute !important;
+  top: 81% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translateX(-50%) !important;
+  z-index: 20 !important;
+  width: max-content !important;
+  max-width: 88% !important;
+  margin: 0 !important;
+}
