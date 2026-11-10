@@ -6,4 +6,24 @@
 <section class="page floral-bg"><div class="maroon-panel event-panel reveal"><div class="event-block"><span class="line-icon">▦</span><h2>Sabtu, 26 Desember 2026</h2></div><div class="event-block"><span class="line-icon">◷</span><p>Akad: 08.00 – 10.00</p><p>Resepsi: 10.00 – Selesai</p></div><div class="event-block"><span class="line-icon">♧</span><p class="location-title">Kediaman Mempelai Wanita</p><p class="address">Kp. Hegarmanah, RT 01/RW 03,<br>Desa Cigarongggong, Kec. Cibalong,<br>Kab. Garut</p><img class="qr" id="locationQr" alt="QR lokasi Google Maps"><a class="map-link" href="https://maps.app.goo.gl/6uacdMQvnE8VaueG8?g_st=ac" target="_blank" rel="noopener">Buka Lokasi di Google Maps ↗</a></div></div></section>
 <section class="page floral-bg"><div class="gift-card reveal"><h2>Wedding Gift</h2><div class="envelope"><div class="envelope-flap"></div><span>✿</span></div><div class="gift-details"><p class="gift-name">AIECA</p><p>Bank Mandiri</p><p class="account" id="accountNumber">1770026460961</p><button class="outline-btn" id="copyAccount">Salin Nomor Rekening</button><p class="copy-status" id="copyStatus" aria-live="polite"></p></div><div class="couple-silhouette">♥</div></div></section>
 <section class="page floral-bg"><div class="rsvp-card reveal"><p class="eyebrow">KAMI MENANTIKAN KEHADIRAN ANDA</p><h2>Anda diundang!</h2><form id="rsvpForm"><label for="guestName">Nama</label><input id="guestName" name="name" maxlength="100" required placeholder="Masukkan nama Anda"><fieldset><legend>Apa Anda akan hadir di resepsi nikahan kami?</legend><label class="choice"><input type="radio" name="attendance" value="Hadir" required><span>Tentu, dengan senang hati</span><b>♡</b></label><label class="choice"><input type="radio" name="attendance" value="Tidak hadir"><span>Mohon maaf tidak dapat hadir</span><b>☹</b></label></fieldset><label for="guestMessage">Ucapan dan doa untuk kedua mempelai</label><textarea id="guestMessage" name="message" rows="4" maxlength="500" required placeholder="Tuliskan ucapan dan doa terbaik Anda..."></textarea><button class="primary-btn submit-btn" type="submit">Kirim RSVP &amp; Ucapan <span>↗</span></button><p id="rsvpMessage" class="form-message" role="status"></p></form><div class="guestbook"><h3>Ucapan &amp; Doa</h3><p class="guestbook-intro">Doa dan ucapan dari keluarga serta sahabat</p><div id="guestbookList" class="guestbook-list"><p class="guestbook-empty">Memuat ucapan...</p></div></div></div></section>
-<section class="page floral-bg"><div class="closing-card reveal"><div class="couple-art"><span>♥</span><div class="bride"></div><div class="groom"></div></div><p class="closing-quote">“Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.”</p><p class="arabic closing-greeting" lang="ar" dir="rtl">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p><p class="end-mark">Dengan penuh cinta</p><h2 class="closing-names">Ai Eca <span>&amp;</span> Rahmat Alif</h2></div></section></main><footer lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</footer><script src="script.js"></script></body></html>
+<section class="page floral-bg"><div class="closing-card reveal"><div class="couple-art"><span>♥</span><div class="bride"></div><div class="groom"></div></div><p class="closing-quote">“Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.”</p><p class="arabic closing-greeting" lang="ar" dir="rtl">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p><p class="end-mark">Dengan penuh cinta</p><h2 class="closing-names">Ai Eca <span>&amp;</span> Rahmat Alif</h2></div></section></main><footer lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</footer><script src="script.js"></script>
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('to');
+  if (!raw) return;
+  const name = raw.replace(/[<>]/g, '').trim().slice(0, 100);
+  if (!name) return;
+  const greeting = document.getElementById('guestGreeting');
+  if (greeting) {
+    greeting.textContent = 'Kepada Yth. ' + name;
+    greeting.hidden = false;
+    greeting.removeAttribute('hidden');
+    greeting.style.display = 'block';
+    greeting.style.zIndex = '20';
+  }
+  const nameInput = document.getElementById('guestName');
+  if (nameInput && !nameInput.value) nameInput.value = name;
+  document.title = 'Undangan untuk ' + name + ' — Ai Eca & Rahmat Alif';
+})();
+</script></body></html>
