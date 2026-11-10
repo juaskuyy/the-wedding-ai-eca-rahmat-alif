@@ -162,3 +162,24 @@
 #cover .cover-guest-greeting[hidden] {
   display: none !important;
 }
+
+/* FIX POSISI NAMA TAMU PADA COVER */
+section.cover.page#cover {
+  position: relative !important;
+  overflow: hidden;
+}
+
+section.cover.page#cover > #guestGreeting {
+  position: absolute !important;
+  top: 84% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 50 !important;
+  width: max-content !important;
+  max-width: 88% !important;
+  margin: 0 !important;
+  display: block;
+  text-align: center !important;
+}
