@@ -125,7 +125,7 @@ footer{text-align:center;padding:22px 15px;background:var(--wine);color:var(--cr
 /* Posisi sapaan: tepat di area kosong bawah ilustrasi/nama, tidak menimpa nama mempelai */
 #cover .cover-guest-greeting{
   position:absolute!important;
-  top:76%!important;
+  top:88%!important;
   bottom:auto!important;
   left:50%!important;
   right:auto!important;
