@@ -92,3 +92,20 @@
   font-size: 17px;
   text-underline-offset: 5px;
 }
+
+/* Family card: couple names above their respective parents */
+.family-card .couple-name {
+  margin: 8px 0 2px;
+  font-size: clamp(27px, 7vw, 34px);
+  line-height: 1.2;
+}
+.family-card > p:not(.parents) {
+  margin: 3px 0 2px;
+}
+.family-card .parents {
+  margin: 2px 0 12px;
+  line-height: 1.45;
+}
+.family-card .ampersand {
+  margin: 8px 0 10px;
+}
