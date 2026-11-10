@@ -111,25 +111,6 @@
 
 /* Personal guest greeting: lower cover gap, below the couple names
    and above the bottom floral decoration. */
-.cover-guest-greeting {
-  position: absolute;
-  top: 81.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 8;
-  width: max-content;
-  max-width: 88%;
-  margin: 0;
-  padding: 8px 16px;
-  box-sizing: border-box;
-  font-size: clamp(14px, 4.2vw, 20px);
-  line-height: 1.25;
-  white-space: normal;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(80, 25, 20, .08);
-}
-
-
 /* RSVP and guestbook are combined in one invitation page */
 #rsvpForm textarea {
   width:100%; min-height:112px; resize:vertical; padding:13px 15px;
@@ -149,61 +130,35 @@
 .guestbook-empty { text-align:center; color:#806c5e; padding:14px; }
 
 /* Recipient greeting belongs on the opening cover, not the Quran/dua page. */
-.cover-guest-greeting {
-  position: absolute;
-  z-index: 4;
-  top: 19%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: calc(100% - 42px);
-  margin: 0;
-  padding: 9px 16px;
-  color: var(--wine);
-  background: rgba(255, 246, 226, .92);
-  border: 1px solid var(--gold);
-  border-radius: 14px;
-  box-shadow: 0 3px 12px rgba(75, 24, 24, .10);
-  font-size: clamp(14px, 4vw, 18px);
-  line-height: 1.35;
-  text-align: center;
-  font-style: italic;
-  letter-spacing: .02em;
-}
-.cover-guest-greeting {
-  position: absolute !important;
-  z-index: 20 !important;
-  top: 17% !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  display: block;
-  width: max-content;
-  max-width: calc(100% - 36px);
-  box-sizing: border-box;
-  padding: 10px 16px;
-  margin: 0;
-  color: var(--wine, #68131d);
-  background: rgba(255, 246, 226, .96);
-  border: 1px solid var(--gold, #b99a60);
-  border-radius: 14px;
-  box-shadow: 0 3px 12px rgba(75, 24, 24, .12);
-  font-size: clamp(14px, 4vw, 18px);
-  line-height: 1.35;
-  text-align: center;
-  font-style: italic;
-}
-.cover-guest-greeting[hidden] { display: none !important; }
 
-/* POSISI FINAL SAPAAN TAMU DI BAWAH PASANGAN */
+
+/* FINAL FIX: keep recipient greeting below both names, in the lower floral gap.
+   This is deliberately the last cover greeting rule in the stylesheet. */
 #cover .cover-guest-greeting {
   position: absolute !important;
-  top: 81% !important;
+  top: 84% !important;
+  bottom: auto !important;
   left: 50% !important;
   right: auto !important;
-  bottom: auto !important;
-  transform: translateX(-50%) !important;
-  z-index: 20 !important;
-  width: max-content !important;
-  max-width: 88% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 30 !important;
+  display: block;
+  width: max-content;
+  max-width: 88%;
+  box-sizing: border-box;
   margin: 0 !important;
+  padding: 8px 14px;
+  color: #68131d;
+  background: rgba(255, 246, 226, .94);
+  border: 1px solid #b99a60;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(75, 24, 24, .12);
+  font-size: clamp(13px, 3.8vw, 18px);
+  line-height: 1.25;
+  text-align: center;
+  font-style: italic;
+  white-space: normal;
+}
+#cover .cover-guest-greeting[hidden] {
+  display: none !important;
 }
