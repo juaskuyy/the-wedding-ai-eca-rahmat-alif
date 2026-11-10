@@ -157,7 +157,7 @@ footer{text-align:center;padding:22px 15px;background:var(--wine);color:var(--cr
 /* Selector paling spesifik untuk elemen sapaan pada HTML sampul */
 section.cover.page#cover > #guestGreeting{
   position:absolute!important;
-  top:76%!important;
+  top:88%!important;
   bottom:auto!important;
   left:50%!important;
   right:auto!important;
