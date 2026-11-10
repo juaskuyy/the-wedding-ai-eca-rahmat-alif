@@ -109,6 +109,27 @@
 }
 .guest-greeting[hidden] { display: none !important; }
 
+/* Personal guest greeting: lower cover gap, below the couple names
+   and above the bottom floral decoration. */
+.cover-guest-greeting {
+  position: absolute;
+  top: 81.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  width: max-content;
+  max-width: 88%;
+  margin: 0;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  font-size: clamp(14px, 4.2vw, 20px);
+  line-height: 1.25;
+  white-space: normal;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(80, 25, 20, .08);
+}
+
+
 /* RSVP and guestbook are combined in one invitation page */
 #rsvpForm textarea {
   width:100%; min-height:112px; resize:vertical; padding:13px 15px;
