@@ -136,7 +136,7 @@
    This is deliberately the last cover greeting rule in the stylesheet. */
 #cover .cover-guest-greeting {
   position: absolute !important;
-  top: 88% !important;
+  top: 76% !important;
   bottom: auto !important;
   left: 50% !important;
   right: auto !important;
