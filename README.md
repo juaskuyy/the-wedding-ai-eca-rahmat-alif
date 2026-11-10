@@ -15,3 +15,17 @@ Website responsif untuk GitHub + Cloudflare Pages, termasuk Cloudflare Pages Fun
 - Musik belum disediakan. Jika sudah ada file musik yang berhak digunakan, letakkan sebagai `assets/music.mp3`.
 - QR lokasi dimuat dari layanan QR eksternal dengan tautan Google Maps yang diberikan.
 - `assets/*reference.jpg` adalah screenshot referensi; aset background dan cover utama menggunakan gambar yang diberikan.
+
+## Halaman Admin dan Link Undangan Personal
+- Buka `https://DOMAIN-UNDANGAN/admin.html`, masukkan secret `ADMIN_TOKEN` untuk melihat daftar RSVP.
+- Admin menampilkan total RSVP, jumlah hadir/tidak hadir, nama, dan waktu konfirmasi.
+- Di bagian pembuat link, masukkan nama tamu lalu pilih Salin Link atau Bagikan ke WhatsApp.
+- Link personal memakai parameter `?to=Nama`; halaman undangan akan menampilkan sapaan untuk nama tersebut dan mengisi nama pada formulir RSVP.
+- Jangan bagikan `ADMIN_TOKEN` atau URL API admin kepada tamu.
+
+## RSVP + Buku Ucapan
+- Form RSVP dan ucapan berada pada satu halaman.
+- Pengunjung mengisi nama, status hadir/tidak hadir, lalu ucapan dan doa.
+- Data RSVP disimpan di tabel `rsvps`; ucapan disimpan di tabel `guestbook`.
+- Untuk database yang sudah aktif, jalankan `migration-guestbook.sql` satu kali di D1 Console sebelum deploy source code terbaru.
+- Daftar ucapan tampil di bawah form dan juga di dashboard `/admin`.

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#68131d">
+<title>Admin Undangan — Ai Eca & Rahmat Alif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#68131d;--cream:#fff1d8;--paper:#fff9ed;--ink:#4c1719;--gold:#b99a67}
+*{box-sizing:border-box}body{margin:0;background:#f4e4d5;color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:18px}
+main{max-width:900px;margin:auto;padding:24px 16px 60px}
+header{background:linear-gradient(145deg,#71151e,#4d0d15);color:var(--cream);padding:28px 22px;border-radius:18px;text-align:center;margin-bottom:18px}
+h1,h2{font-family:'Playfair Display',Georgia,serif;margin:0 0 10px}h1{font-size:30px}h2{font-size:23px}
+.panel{background:var(--paper);border:1px solid #d2b28d;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 8px 24px #4b1b1810}
+label{display:block;margin:8px 0 5px}input{width:100%;padding:12px;border:1px solid #b99a67;border-radius:9px;background:#fff;font:inherit;color:var(--ink)}
+button,.button{display:inline-block;border:0;border-radius:24px;background:var(--wine);color:var(--cream);padding:11px 18px;font:inherit;text-decoration:none;cursor:pointer;margin:8px 6px 0 0}
+button.secondary{background:#ead9bd;color:var(--wine);border:1px solid var(--gold)}
+small,.muted{color:#765d54}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#f8ecd7;border-radius:12px;padding:14px;text-align:center}.stat strong{display:block;font:600 27px 'Playfair Display'}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px}th,td{text-align:left;padding:10px;border-bottom:1px solid #ead9bd}th{color:var(--wine)}
+.status{display:inline-block;padding:3px 9px;border-radius:20px;background:#f2e3c7}.empty{padding:18px;text-align:center;color:#765d54}
+#notice{margin-top:10px;white-space:pre-wrap}.row-actions{white-space:nowrap}
+@media(max-width:560px){main{padding:14px 10px 40px}.panel{padding:15px}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:10px 4px}.stat strong{font-size:22px}}
+</style>
+</head>
+<body><main>
+<header><h1>Admin Undangan</h1><div>Ai Eca &amp; Rahmat Alif</div><small style="color:#f4dfc1">Rekap RSVP dan pembuat link undangan personal</small></header>
+<section class="panel" id="loginPanel">
+<h2>Akses Admin</h2>
+<label for="token">Masukkan ADMIN_TOKEN Cloudflare</label>
+<input id="token" type="password" autocomplete="current-password" placeholder="Token rahasia admin">
+<button id="loadBtn">Masuk &amp; Muat Daftar Tamu</button>
+<p id="notice" class="muted" role="status">Token hanya digunakan untuk meminta data admin. Jangan bagikan token atau halaman ini.</p>
+</section>
+<section class="panel" id="dashboard" hidden>
+<h2>Rekap Kehadiran</h2>
+<div class="stats"><div class="stat"><strong id="total">0</strong>Total RSVP</div><div class="stat"><strong id="present">0</strong>Hadir</div><div class="stat"><strong id="absent">0</strong>Tidak hadir</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px"><h2 style="margin:0">Daftar Tamu</h2><button class="secondary" id="refreshBtn">Muat Ulang</button></div>
+<div class="table-wrap"><table><thead><tr><th>No.</th><th>Nama</th><th>Kehadiran</th><th>Waktu Konfirmasi</th></tr></thead><tbody id="guestRows"></tbody></table></div>
+<p id="emptyList" class="empty" hidden>Belum ada tamu yang mengisi RSVP.</p>
+<h2 style="margin-top:26px">Daftar Ucapan &amp; Doa</h2>
+<div id="adminMessages" class="table-wrap"></div>
+<p id="emptyMessages" class="empty" hidden>Belum ada ucapan.</p>
+</section>
+<section class="panel" id="generator">
+<h2>Buat Link Undangan Personal</h2>
+<p>Masukkan nama tamu. Link akan menampilkan sapaan khusus dan otomatis mengisi nama pada formulir RSVP.</p>
+<label for="guestName">Nama tamu undangan</label>
+<input id="guestName" placeholder="Contoh: Bapak Ahmad dan keluarga" maxlength="100">
+<div><button id="makeLink">Buat Link</button></div>
+<div id="linkResult" hidden>
+<label for="inviteLink">Link undangan personal</label><input id="inviteLink" readonly>
+<button id="copyLink">Salin Link</button><button id="shareWA">Bagikan ke WhatsApp</button>
+<button class="secondary" id="copyText">Salin Teks Undangan</button>
+</div>
+<p class="muted" id="genNotice">Link menggunakan nama pada parameter ?to= dan dapat langsung dibagikan.</p>
+</section>
+<p class="muted" style="text-align:center">Halaman admin hanya untuk pemilik undangan. Jangan bagikan token rahasia.</p>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let adminToken='';
+let generatedMessage='';
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+async function loadGuests(){
+  const notice=$('#notice');notice.textContent='Memuat daftar tamu…';
+  try{
+    const r=await fetch('/api/admin?token='+encodeURIComponent(adminToken),{cache:'no-store'});
+    const data=await r.json();
+    if(!r.ok)throw new Error(data.error||'Tidak dapat memuat data admin.');
+    const rows=data.results||[];
+    $('#total').textContent=rows.length;
+    $('#present').textContent=rows.filter(x=>x.attendance==='Hadir').length;
+    $('#absent').textContent=rows.filter(x=>x.attendance==='Tidak hadir').length;
+    $('#guestRows').innerHTML=rows.map((x,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(x.name)+'</td><td><span class="status">'+esc(x.attendance)+'</span></td><td>'+new Date(x.created_at).toLocaleString('id-ID')+'</td></tr>').join('');
+    $('#emptyList').hidden=rows.length!==0;
+    const wishes=data.guestbook||[];
+    $('#adminMessages').innerHTML=wishes.length?'<table><thead><tr><th>Nama</th><th>Ucapan</th><th>Waktu</th></tr></thead><tbody>'+wishes.map(x=>'<tr><td>'+esc(x.name)+'</td><td style="white-space:pre-wrap">'+esc(x.message)+'</td><td>'+new Date(x.created_at).toLocaleString('id-ID')+'</td></tr>').join('')+'</tbody></table>':'';
+    $('#emptyMessages').hidden=wishes.length!==0;
+    $('#dashboard').hidden=false;
+    notice.textContent='Daftar tamu dan ucapan berhasil dimuat.';
+  }catch(e){notice.textContent=e.message;}
+}
+$('#loadBtn').addEventListener('click',()=>{adminToken=$('#token').value.trim();if(!adminToken){$('#notice').textContent='Token admin wajib diisi.';return;}loadGuests();});
+$('#refreshBtn').addEventListener('click',loadGuests);
+$('#makeLink').addEventListener('click',()=>{
+  const name=$('#guestName').value.trim();
+  if(!name){$('#genNotice').textContent='Masukkan nama tamu terlebih dahulu.';return;}
+  const url=new URL('/',location.origin);url.searchParams.set('to',name);
+  $('#inviteLink').value=url.toString();
+  generatedMessage='Assalamu’alaikum Warahmatullahi Wabarakatuh.\n\nTanpa mengurangi rasa hormat, kami mengundang '+name+' untuk menghadiri pernikahan kami.\n\nBerikut link undangan dan informasi lengkap acara:\n'+url.toString()+'\n\nMerupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.\n\nWassalamu’alaikum Warahmatullahi Wabarakatuh.\n\nAi Eca & Rahmat Alif';
+  $('#linkResult').hidden=false;$('#genNotice').textContent='Link personal berhasil dibuat.';
+});
+$('#copyLink').addEventListener('click',async()=>{await navigator.clipboard.writeText($('#inviteLink').value);$('#genNotice').textContent='Link berhasil disalin.';});
+$('#copyText').addEventListener('click',async()=>{await navigator.clipboard.writeText(generatedMessage);$('#genNotice').textContent='Teks undangan berhasil disalin.';});
+$('#shareWA').addEventListener('click',()=>{if(!generatedMessage)return;window.open('https://wa.me/?text='+encodeURIComponent(generatedMessage),'_blank','noopener');});
+</script></body></html>

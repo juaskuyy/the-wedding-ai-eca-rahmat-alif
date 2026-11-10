@@ -93,19 +93,36 @@
   text-underline-offset: 5px;
 }
 
-/* Family card: couple names above their respective parents */
-.family-card .couple-name {
-  margin: 8px 0 2px;
-  font-size: clamp(27px, 7vw, 34px);
-  line-height: 1.2;
+.guest-greeting {
+  color: var(--wine);
+  background: rgba(255, 241, 216, .82);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 0 auto 18px;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 18px;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: .02em;
 }
-.family-card > p:not(.parents) {
-  margin: 3px 0 2px;
+.guest-greeting[hidden] { display: none !important; }
+
+/* RSVP and guestbook are combined in one invitation page */
+#rsvpForm textarea {
+  width:100%; min-height:112px; resize:vertical; padding:13px 15px;
+  border:1px solid #9b795a; border-radius:12px; background:#fff8eb;
+  color:var(--ink); font:18px var(--serif); line-height:1.45;
+  margin:7px 0 12px;
 }
-.family-card .parents {
-  margin: 2px 0 12px;
-  line-height: 1.45;
-}
-.family-card .ampersand {
-  margin: 8px 0 10px;
-}
+#rsvpForm textarea:focus { outline:2px solid #b99a67; outline-offset:2px; }
+.guestbook { margin-top:28px; padding-top:20px; border-top:1px solid #d9c39e; }
+.guestbook h3 { margin:0; color:var(--wine); font:600 27px var(--display); text-align:center; }
+.guestbook-intro { text-align:center; margin:5px 0 16px; color:#765d54; font-size:16px; }
+.guestbook-list { display:grid; gap:12px; }
+.guestbook-item { background:#fff7e8; border:1px solid #ddc69e; border-radius:13px; padding:13px 15px; }
+.guestbook-item strong { color:var(--wine); font:600 19px var(--display); }
+.guestbook-item p { white-space:pre-wrap; overflow-wrap:anywhere; margin:7px 0; line-height:1.45; }
+.guestbook-item small { color:#806c5e; font-size:13px; }
+.guestbook-empty { text-align:center; color:#806c5e; padding:14px; }
