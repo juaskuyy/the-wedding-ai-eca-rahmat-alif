@@ -126,3 +126,27 @@
 .guestbook-item p { white-space:pre-wrap; overflow-wrap:anywhere; margin:7px 0; line-height:1.45; }
 .guestbook-item small { color:#806c5e; font-size:13px; }
 .guestbook-empty { text-align:center; color:#806c5e; padding:14px; }
+
+/* Recipient greeting belongs on the opening cover, not the Quran/dua page. */
+.cover-guest-greeting {
+  position: absolute;
+  z-index: 4;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 42px);
+  margin: 0;
+  padding: 9px 16px;
+  color: var(--wine);
+  background: rgba(255, 246, 226, .92);
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(75, 24, 24, .10);
+  font-size: clamp(14px, 4vw, 18px);
+  line-height: 1.35;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: .02em;
+}
+.cover-guest-greeting[hidden] { display: none !important; }
